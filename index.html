@@ -22,6 +22,8 @@
       display: block;
       width: 100%;
       height: auto;
+      position: relative;
+      z-index: 1;
     }
 
     .footer {
@@ -32,81 +34,55 @@
       color: white;
       font-size: 14px;
       font-family: Arial, sans-serif;
+      position: relative;
+      z-index: 2;
     }
 
-    /* Scroll button */
-    .back-to-top {
+    .floating-buttons {
       position: fixed;
       bottom: 25px;
       right: 25px;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-
-      background: rgba(255,255,255,0.08);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-
-      border: 1px solid rgba(255,255,255,0.18);
-
-      color: white;
-      font-size: 22px;
-      cursor: pointer;
-
-      box-shadow:
-      0 8px 32px rgba(0,0,0,0.35),
-      inset 0 1px 1px rgba(255,255,255,0.15);
-
-      z-index: 9999;
-      transition: all .3s ease;
+      display: flex;
+      gap: 12px;
+      z-index: 999999;
     }
 
-    .back-to-top:hover {
-      transform: translateY(-3px) scale(1.08);
-      background: rgba(255,255,255,0.14);
-    }
-
-    /* Resume button */
-    .resume-btn {
-      position: fixed;
-      bottom: 25px;
-      right: 90px;
-
-      width: 75px;
+    .resume-btn,
+    .back-to-top {
       height: 50px;
-
       border-radius: 30px;
-
-      background: rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.16);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-
-      border: 1px solid rgba(255,255,255,0.18);
-
+      border: 1px solid rgba(255,255,255,0.35);
       color: white;
-      font-size: 14px;
       cursor: pointer;
-
-      box-shadow:
-      0 8px 32px rgba(0,0,0,0.35),
-      inset 0 1px 1px rgba(255,255,255,0.15);
-
-      z-index: 9999;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.45);
       transition: all .3s ease;
     }
 
-    .resume-btn:hover {
-      transform: translateY(-3px) scale(1.05);
-      background: rgba(255,255,255,0.14);
+    .resume-btn {
+      width: 90px;
+      font-size: 14px;
     }
 
-    /* Popup */
+    .back-to-top {
+      width: 50px;
+      font-size: 24px;
+    }
+
+    .resume-btn:hover,
+    .back-to-top:hover {
+      transform: translateY(-3px) scale(1.05);
+      background: rgba(255,255,255,0.25);
+    }
+
     .resume-modal {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,.85);
-      z-index: 10000;
+      background: rgba(0,0,0,.9);
+      z-index: 1000000;
     }
 
     .resume-content {
@@ -114,10 +90,8 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-
       width: 85%;
       height: 90%;
-
       background: #111;
       border-radius: 20px;
       overflow: hidden;
@@ -133,9 +107,8 @@
       position: absolute;
       top: 12px;
       right: 20px;
-
       color: white;
-      font-size: 30px;
+      font-size: 32px;
       cursor: pointer;
       z-index: 2;
     }
@@ -150,39 +123,31 @@
     More being uploaded soon. Thanks for making it this far.
   </footer>
 
-  <button class="resume-btn" onclick="openResume()">
-    Resume
-  </button>
+  <div class="floating-buttons">
+    <button class="resume-btn" onclick="openResume()">Resume</button>
 
-  <button class="back-to-top"
-  onclick="window.scrollTo({top:0, behavior:'smooth'})">
-    ↑
-  </button>
+    <button class="back-to-top"
+      onclick="window.scrollTo({top:0, behavior:'smooth'})">
+      ↑
+    </button>
+  </div>
 
   <div id="resumeModal" class="resume-modal">
     <div class="resume-content">
-
-      <span class="close"
-      onclick="closeResume()">×</span>
-
+      <span class="close" onclick="closeResume()">×</span>
       <iframe src="resume.pdf"></iframe>
-
     </div>
   </div>
 
-<script>
-function openResume(){
-document.getElementById(
-"resumeModal"
-).style.display="block";
-}
+  <script>
+    function openResume(){
+      document.getElementById("resumeModal").style.display = "block";
+    }
 
-function closeResume(){
-document.getElementById(
-"resumeModal"
-).style.display="none";
-}
-</script>
+    function closeResume(){
+      document.getElementById("resumeModal").style.display = "none";
+    }
+  </script>
 
 </body>
 </html>
