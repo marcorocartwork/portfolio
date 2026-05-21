@@ -19,7 +19,11 @@ html,body{
   font-family:Arial,sans-serif;
 }
 
-img{display:block;width:100%;height:auto;}
+img{
+  display:block;
+  width:100%;
+  height:auto;
+}
 
 .footer{
   width:100%;
@@ -41,7 +45,8 @@ img{display:block;width:100%;height:auto;}
   z-index:999999;
 }
 
-.resume-btn,.back-to-top{
+.resume-btn,
+.back-to-top{
   height:50px;
   border-radius:30px;
   background:rgba(255,255,255,.08);
@@ -50,39 +55,57 @@ img{display:block;width:100%;height:auto;}
   border:1px solid rgba(255,255,255,.15);
   color:white;
   cursor:pointer;
-  box-shadow:0 8px 30px rgba(0,0,0,.45), inset 0 1px 1px rgba(255,255,255,.1);
+  box-shadow:0 8px 30px rgba(0,0,0,.45),
+  inset 0 1px 1px rgba(255,255,255,.1);
 }
 
-.resume-btn{width:90px;font-size:14px;}
-.back-to-top{width:50px;font-size:24px;}
+.resume-btn{
+  width:90px;
+  font-size:14px;
+}
+
+.back-to-top{
+  width:50px;
+  font-size:24px;
+}
 
 .resume-modal{
   display:none;
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.8);
+  background:rgba(0,0,0,.82);
   backdrop-filter:blur(10px);
   -webkit-backdrop-filter:blur(10px);
   z-index:1000000;
 }
 
+/* DESKTOP POPUP */
 .resume-content{
   position:absolute;
   top:50%;
   left:50%;
   transform:translate(-50%,-50%);
-  width:420px;
-  max-width:90vw;
-  height:88vh;
-  padding:14px;
+
+  width:90vw;
+  height:92vh;
+
+  padding:10px;
   border-radius:24px;
+
   background:rgba(25,25,25,.82);
+  backdrop-filter:blur(30px);
+  -webkit-backdrop-filter:blur(30px);
+
   overflow-y:auto;
   overflow-x:hidden;
+
   box-sizing:border-box;
+  box-shadow:0 25px 60px rgba(0,0,0,.7);
+  border:1px solid rgba(255,255,255,.08);
 }
 
 .resume-image{
+  display:block;
   width:100%;
   height:auto;
   border-radius:12px;
@@ -99,13 +122,46 @@ img{display:block;width:100%;height:auto;}
   z-index:1000001;
 }
 
+/* MOBILE FULL WIDTH + SCROLL */
 @media (max-width:768px){
   .resume-content{
     width:100vw;
     height:100vh;
+
     top:0;
     left:0;
     transform:none;
+
+    padding:0;
+    border-radius:0;
+
+    overflow-y:auto;
+    overflow-x:hidden;
+
+    background:rgba(25,25,25,.96);
+  }
+
+  .resume-image{
+    width:100%;
+    height:auto;
+    max-width:none;
+    max-height:none;
+    object-fit:unset;
+    border-radius:0;
+  }
+
+  .close{
+    top:12px;
+    right:15px;
+    font-size:36px;
+  }
+}
+
+/* MOBILE LANDSCAPE */
+@media (max-width:1000px) and (orientation:landscape){
+  .resume-content{
+    width:100vw;
+    height:100vh;
     padding:0;
     border-radius:0;
   }
@@ -113,13 +169,6 @@ img{display:block;width:100%;height:auto;}
   .resume-image{
     width:100%;
     height:auto;
-    border-radius:0;
-  }
-
-  .close{
-    top:12px;
-    right:15px;
-    font-size:34px;
   }
 }
 
@@ -141,7 +190,10 @@ img{display:block;width:100%;height:auto;}
   margin-bottom:20px;
 }
 
-.rotate-text{font-size:18px;opacity:.8;}
+.rotate-text{
+  font-size:18px;
+  opacity:.8;
+}
 
 @keyframes rotatePhone{
   0%{transform:rotate(0deg);}
@@ -167,6 +219,7 @@ img{display:block;width:100%;height:auto;}
 
 <div class="floating-buttons">
   <button class="resume-btn" type="button" onclick="openResume()">Resume</button>
+
   <button class="back-to-top" type="button" onclick="scrollToTop()">↑</button>
 </div>
 
