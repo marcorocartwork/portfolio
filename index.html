@@ -1,8 +1,13 @@
 <!doctype html>
 <html lang="en">
 <head>
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Android top bar -->
+<meta name="theme-color" content="#000000">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
 
 <title>Marco Rocha — Portfolio</title>
 
@@ -26,6 +31,7 @@ width:100%;
 height:auto;
 }
 
+
 /* Footer */
 
 .footer{
@@ -41,8 +47,6 @@ color:white;
 font-size:14px;
 
 line-height:1.8;
-
-box-sizing:border-box;
 }
 
 
@@ -63,7 +67,7 @@ z-index:999999;
 }
 
 
-/* Glass buttons */
+/* Buttons */
 
 .resume-btn,
 .back-to-top{
@@ -112,7 +116,7 @@ background:rgba(255,255,255,.15);
 }
 
 
-/* POPUP */
+/* Popup */
 
 .resume-modal{
 
@@ -130,8 +134,6 @@ z-index:1000000;
 
 }
 
-
-/* Popup card */
 
 .resume-content{
 
@@ -189,7 +191,7 @@ background:white;
 }
 
 
-/* Orange close */
+/* Close */
 
 .close{
 
@@ -208,7 +210,7 @@ z-index:999;
 }
 
 
-/* Mobile fix */
+/* Mobile */
 
 @media (max-width:768px){
 
@@ -245,12 +247,95 @@ font-size:32px;
 
 }
 
+
+
+/* Rotate animation */
+
+.rotate-notice{
+
+display:none;
+
+position:fixed;
+
+inset:0;
+
+background:rgba(0,0,0,.95);
+
+z-index:999999999;
+
+justify-content:center;
+align-items:center;
+
+flex-direction:column;
+
+color:white;
+}
+
+
+.phone-wrap{
+
+font-size:75px;
+
+animation:rotatePhone 2s ease infinite;
+
+margin-bottom:20px;
+
+}
+
+
+.rotate-text{
+
+font-size:18px;
+
+opacity:.8;
+}
+
+
+@keyframes rotatePhone{
+
+0%{
+transform:rotate(0deg);
+}
+
+40%{
+transform:rotate(0deg);
+}
+
+100%{
+transform:rotate(90deg);
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
-<img src="image.jpg" alt="Portfolio image">
+
+<div id="rotateNotice"
+class="rotate-notice">
+
+<div class="phone-wrap">
+
+📱
+
+</div>
+
+<div class="rotate-text">
+
+Rotate for a better experience
+
+</div>
+
+</div>
+
+
+
+<img src="image.jpg"
+alt="Portfolio image">
+
+
 
 <footer class="footer">
 
@@ -260,9 +345,11 @@ Thanks for making it this far.
 </footer>
 
 
+
 <div class="floating-buttons">
 
-<button class="resume-btn"
+<button
+class="resume-btn"
 onclick="openResume()">
 
 Resume
@@ -270,7 +357,8 @@ Resume
 </button>
 
 
-<button class="back-to-top"
+<button
+class="back-to-top"
 onclick="window.scrollTo({
 top:0,
 behavior:'smooth'
@@ -288,7 +376,8 @@ behavior:'smooth'
 id="resumeModal"
 class="resume-modal">
 
-<div class="resume-content">
+<div
+class="resume-content">
 
 <span
 class="close"
@@ -298,10 +387,12 @@ onclick="closeResume()">
 
 </span>
 
+
 <img
 src="resume.png"
 class="resume-image"
 alt="Resume">
+
 
 </div>
 
@@ -324,6 +415,28 @@ function closeResume(){
 document.getElementById(
 "resumeModal"
 ).style.display="none";
+
+}
+
+
+/* mobile rotate */
+
+if(window.innerWidth<768){
+
+const notice=
+document.getElementById(
+"rotateNotice"
+);
+
+notice.style.display=
+"flex";
+
+setTimeout(()=>{
+
+notice.style.display=
+"none";
+
+},5000);
 
 }
 
