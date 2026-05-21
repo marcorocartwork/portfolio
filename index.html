@@ -17,6 +17,7 @@ margin:0;
 padding:0;
 background:#000;
 overflow-x:hidden;
+font-family:Arial,sans-serif;
 }
 
 img{
@@ -25,21 +26,22 @@ width:100%;
 height:auto;
 }
 
-/* Bigger footer for mobile spacing */
+/* Footer with more space for mobile */
 
 .footer{
 width:100%;
 text-align:center;
-padding:70px 20px 120px; /* increased bottom space */
+
+padding:70px 20px 140px;
 
 background:#000;
 
 color:white;
 
 font-size:14px;
-font-family:Arial,sans-serif;
 
 line-height:1.8;
+
 box-sizing:border-box;
 }
 
@@ -47,18 +49,22 @@ box-sizing:border-box;
 /* Floating buttons */
 
 .floating-buttons{
+
 position:fixed;
+
 bottom:25px;
 right:25px;
 
 display:flex;
+
 gap:12px;
 
 z-index:999999;
+
 }
 
 
-/* Resume + arrow buttons */
+/* Buttons */
 
 .resume-btn,
 .back-to-top{
@@ -78,24 +84,27 @@ border:1px solid rgba(255,255,255,.15);
 
 color:white;
 
+cursor:pointer;
+
 box-shadow:
 0 8px 30px rgba(0,0,0,.45),
 inset 0 1px 1px rgba(255,255,255,.1);
 
-cursor:pointer;
-
 transition:.3s;
 }
+
 
 .resume-btn{
 width:90px;
 font-size:14px;
 }
 
+
 .back-to-top{
 width:50px;
 font-size:24px;
 }
+
 
 .resume-btn:hover,
 .back-to-top:hover{
@@ -107,7 +116,7 @@ background:rgba(255,255,255,.15);
 }
 
 
-/* MODERN POPUP */
+/* POPUP */
 
 .resume-modal{
 
@@ -117,13 +126,16 @@ position:fixed;
 
 inset:0;
 
-background:rgba(0,0,0,.8);
+background:rgba(0,0,0,.75);
 
 backdrop-filter:blur(10px);
 
 z-index:1000000;
+
 }
 
+
+/* popup card */
 
 .resume-content{
 
@@ -137,35 +149,37 @@ transform:translate(-50%,-50%);
 width:90%;
 height:90%;
 
+background:rgba(30,30,30,.85);
+
 border-radius:30px;
 
 overflow:hidden;
-
-background:rgba(30,30,30,.8);
 
 backdrop-filter:blur(30px);
 
 border:1px solid rgba(255,255,255,.08);
 
 box-shadow:
-0 25px 60px rgba(0,0,0,.6);
+0 25px 60px rgba(0,0,0,.7);
 
 }
 
 
-/* PDF */
+/* Resume image */
 
-.resume-content iframe{
+.resume-image{
 
 width:100%;
 height:100%;
-border:none;
+
+object-fit:contain;
 
 background:white;
+
 }
 
 
-/* X button */
+/* close button */
 
 .close{
 
@@ -174,17 +188,20 @@ position:absolute;
 top:18px;
 right:24px;
 
-font-size:36px;
+font-size:40px;
 
 font-weight:300;
 
-color:#e1a271; /* new color */
+color:#e1a271;
 
 cursor:pointer;
 
 z-index:999;
+
 transition:.3s;
+
 }
+
 
 .close:hover{
 
@@ -201,56 +218,86 @@ opacity:.8;
 
 <img src="image.jpg" alt="Portfolio image">
 
+
 <footer class="footer">
+
 More being uploaded soon.
 Thanks for making it this far.
+
 </footer>
+
 
 
 <div class="floating-buttons">
 
-<button class="resume-btn"
+<button
+class="resume-btn"
 onclick="openResume()">
+
 Resume
+
 </button>
 
-<button class="back-to-top"
-onclick="window.scrollTo({top:0,behavior:'smooth'})">
+
+<button
+class="back-to-top"
+onclick="window.scrollTo({
+top:0,
+behavior:'smooth'
+})">
+
 ↑
+
 </button>
 
 </div>
 
 
-<div id="resumeModal"
+
+<div
+id="resumeModal"
 class="resume-modal">
 
 <div class="resume-content">
 
-<span class="close"
+<span
+class="close"
 onclick="closeResume()">
+
 ×
+
 </span>
 
-<iframe src="resume.pdf"></iframe>
+
+<img
+class="resume-image"
+src="resume.png"
+alt="Resume">
+
 
 </div>
 
 </div>
+
 
 
 <script>
 
 function openResume(){
+
 document.getElementById(
 "resumeModal"
 ).style.display="block";
+
 }
 
+
 function closeResume(){
+
 document.getElementById(
 "resumeModal"
 ).style.display="none";
+
 }
 
 </script>
