@@ -41,7 +41,7 @@ line-height:1.8;
 box-sizing:border-box;
 }
 
-/* floating buttons */
+/* buttons */
 
 .floating-buttons{
 position:fixed;
@@ -56,9 +56,7 @@ z-index:999999;
 .back-to-top{
 
 height:50px;
-
 border:none;
-
 border-radius:30px;
 
 background:rgba(255,255,255,.08);
@@ -116,7 +114,7 @@ z-index:1000000;
 }
 
 
-/* DESKTOP popup smaller */
+/* DESKTOP POPUP */
 
 .resume-content{
 
@@ -127,22 +125,22 @@ left:50%;
 
 transform:translate(-50%,-50%);
 
-width:auto;
-height:auto;
+width:420px;
+max-width:90vw;
 
-max-width:70vw;
-max-height:88vh;
+height:88vh;
 
-padding:15px;
+padding:14px;
 
-border-radius:30px;
+border-radius:24px;
 
 background:rgba(25,25,25,.82);
 
 backdrop-filter:blur(30px);
 -webkit-backdrop-filter:blur(30px);
 
-overflow:hidden;
+overflow-y:auto;
+overflow-x:hidden;
 
 box-sizing:border-box;
 
@@ -158,22 +156,17 @@ border:1px solid rgba(255,255,255,.08);
 
 display:block;
 
-width:auto;
+width:100%;
 height:auto;
 
-max-width:100%;
-max-height:82vh;
-
-object-fit:contain;
-
-border-radius:15px;
+border-radius:12px;
 
 background:white;
 
 }
 
 
-/* close button */
+/* close */
 
 .close{
 
@@ -188,7 +181,8 @@ color:#e1a271;
 
 cursor:pointer;
 
-z-index:999;
+z-index:99999;
+
 }
 
 
@@ -222,11 +216,6 @@ background:rgba(25,25,25,.95);
 width:100%;
 height:auto;
 
-max-width:none;
-max-height:none;
-
-object-fit:unset;
-
 border-radius:0;
 
 }
@@ -240,14 +229,12 @@ right:15px;
 
 font-size:34px;
 
-z-index:99999;
-
 }
 
 }
 
 
-/* landscape mobile */
+/* landscape */
 
 @media (max-width:1000px)
 and (orientation:landscape){
@@ -264,7 +251,7 @@ padding:0;
 }
 
 
-/* rotate intro */
+/* rotate animation */
 
 .rotate-notice{
 
@@ -278,8 +265,6 @@ background:rgba(0,0,0,.95);
 
 z-index:999999999;
 
-display:flex;
-
 justify-content:center;
 align-items:center;
 
@@ -287,7 +272,6 @@ flex-direction:column;
 
 color:white;
 
-opacity:0;
 }
 
 
@@ -301,11 +285,13 @@ margin-bottom:20px;
 
 }
 
+
 .rotate-text{
 
 font-size:18px;
 
 opacity:.8;
+
 }
 
 
@@ -334,15 +320,11 @@ transform:rotate(90deg);
 class="rotate-notice">
 
 <div class="phone-wrap">
-
 📱
-
 </div>
 
 <div class="rotate-text">
-
 Rotate for a better experience
-
 </div>
 
 </div>
@@ -365,11 +347,8 @@ Thanks for making it this far.
 <button
 class="resume-btn"
 onclick="openResume()">
-
 Resume
-
 </button>
-
 
 <button
 class="back-to-top"
@@ -377,9 +356,7 @@ onclick="window.scrollTo({
 top:0,
 behavior:'smooth'
 })">
-
 ↑
-
 </button>
 
 </div>
@@ -395,11 +372,8 @@ onclick="outsideClick(event)">
 <span
 class="close"
 onclick="closeResume()">
-
 ×
-
 </span>
-
 
 <img
 src="resume.png"
@@ -417,8 +391,7 @@ function openResume(){
 
 document.getElementById(
 "resumeModal"
-).style.display=
-"block";
+).style.display="block";
 
 document.body.style.overflow=
 "hidden";
@@ -433,14 +406,10 @@ function closeResume(){
 
 document.getElementById(
 "resumeModal"
-).style.display=
-"none";
+).style.display="none";
 
-document.body.style.overflow=
-"";
-
-document.documentElement.style.overflow=
-"";
+document.body.style.overflow="";
+document.documentElement.style.overflow="";
 
 }
 
@@ -463,8 +432,6 @@ closeResume();
 }
 
 
-/* mobile intro */
-
 if(window.innerWidth<768){
 
 const notice=
@@ -472,7 +439,8 @@ document.getElementById(
 "rotateNotice"
 );
 
-notice.style.opacity="1";
+notice.style.display=
+"flex";
 
 setTimeout(()=>{
 
