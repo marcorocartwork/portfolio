@@ -36,22 +36,24 @@
 
     .back-to-top {
       position: fixed;
-      bottom: 30px;
-      right: 30px;
-      width: 55px;
-      height: 55px;
+      bottom: 20px;
+      right: 20px;
+      width: 45px;
+      height: 45px;
       border-radius: 50%;
-      border: 1px solid white;
-      background: #111;
+      border: none;
+      background: rgba(255,255,255,0.15);
       color: white;
-      font-size: 28px;
+      font-size: 20px;
       cursor: pointer;
+      backdrop-filter: blur(10px);
       z-index: 9999;
+      transition: 0.2s ease;
     }
 
     .back-to-top:hover {
-      transform: scale(1.08);
-      transition: 0.2s;
+      transform: scale(1.1);
+      background: rgba(255,255,255,0.25);
     }
   </style>
 </head>
