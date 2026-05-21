@@ -1,456 +1,214 @@
 <!doctype html>
 <html lang="en">
 <head>
-
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <meta name="theme-color" content="#000000">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
 <title>Marco Rocha — Portfolio</title>
 
 <style>
-
-html{
-scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth;}
 
 html,body{
-margin:0;
-padding:0;
-background:#000;
-overflow-x:hidden;
-font-family:Arial,sans-serif;
+  margin:0;
+  padding:0;
+  background:#000;
+  overflow-x:hidden;
+  font-family:Arial,sans-serif;
 }
 
-img{
-display:block;
-width:100%;
-height:auto;
-}
+img{display:block;width:100%;height:auto;}
 
 .footer{
-width:100%;
-text-align:center;
-padding:70px 20px 140px;
-background:#000;
-color:white;
-font-size:14px;
-line-height:1.8;
-box-sizing:border-box;
+  width:100%;
+  text-align:center;
+  padding:70px 20px 140px;
+  background:#000;
+  color:white;
+  font-size:14px;
+  line-height:1.8;
+  box-sizing:border-box;
 }
-
-/* buttons */
 
 .floating-buttons{
-position:fixed;
-bottom:25px;
-right:25px;
-display:flex;
-gap:12px;
-z-index:999999;
+  position:fixed;
+  bottom:25px;
+  right:25px;
+  display:flex;
+  gap:12px;
+  z-index:999999;
 }
 
-.resume-btn,
-.back-to-top{
-
-height:50px;
-border:none;
-border-radius:30px;
-
-background:rgba(255,255,255,.08);
-
-backdrop-filter:blur(18px);
--webkit-backdrop-filter:blur(18px);
-
-border:1px solid rgba(255,255,255,.15);
-
-color:white;
-
-cursor:pointer;
-
-box-shadow:
-0 8px 30px rgba(0,0,0,.45),
-inset 0 1px 1px rgba(255,255,255,.1);
-
-transition:.3s;
+.resume-btn,.back-to-top{
+  height:50px;
+  border-radius:30px;
+  background:rgba(255,255,255,.08);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,.15);
+  color:white;
+  cursor:pointer;
+  box-shadow:0 8px 30px rgba(0,0,0,.45), inset 0 1px 1px rgba(255,255,255,.1);
 }
 
-.resume-btn{
-width:90px;
-font-size:14px;
-}
-
-.back-to-top{
-width:50px;
-font-size:24px;
-}
-
-.resume-btn:hover,
-.back-to-top:hover{
-transform:translateY(-3px);
-background:rgba(255,255,255,.15);
-}
-
-
-/* popup background */
+.resume-btn{width:90px;font-size:14px;}
+.back-to-top{width:50px;font-size:24px;}
 
 .resume-modal{
-
-display:none;
-
-position:fixed;
-
-inset:0;
-
-background:rgba(0,0,0,.8);
-
-backdrop-filter:blur(10px);
-
--webkit-backdrop-filter:blur(10px);
-
-z-index:1000000;
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.8);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  z-index:1000000;
 }
-
-
-/* DESKTOP POPUP */
 
 .resume-content{
-
-position:absolute;
-
-top:50%;
-left:50%;
-
-transform:translate(-50%,-50%);
-
-width:420px;
-max-width:90vw;
-
-height:88vh;
-
-padding:14px;
-
-border-radius:24px;
-
-background:rgba(25,25,25,.82);
-
-backdrop-filter:blur(30px);
--webkit-backdrop-filter:blur(30px);
-
-overflow-y:auto;
-overflow-x:hidden;
-
-box-sizing:border-box;
-
-box-shadow:
-0 25px 60px rgba(0,0,0,.7);
-
-border:1px solid rgba(255,255,255,.08);
-
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:420px;
+  max-width:90vw;
+  height:88vh;
+  padding:14px;
+  border-radius:24px;
+  background:rgba(25,25,25,.82);
+  overflow-y:auto;
+  overflow-x:hidden;
+  box-sizing:border-box;
 }
-
 
 .resume-image{
-
-display:block;
-
-width:100%;
-height:auto;
-
-border-radius:12px;
-
-background:white;
-
+  width:100%;
+  height:auto;
+  border-radius:12px;
+  background:white;
 }
-
-
-/* close */
 
 .close{
-
-position:absolute;
-
-top:12px;
-right:20px;
-
-font-size:42px;
-
-color:#e1a271;
-
-cursor:pointer;
-
-z-index:99999;
-
+  position:fixed;
+  top:18px;
+  right:28px;
+  font-size:42px;
+  color:#e1a271;
+  cursor:pointer;
+  z-index:1000001;
 }
-
-
-/* MOBILE */
 
 @media (max-width:768px){
+  .resume-content{
+    width:100vw;
+    height:100vh;
+    top:0;
+    left:0;
+    transform:none;
+    padding:0;
+    border-radius:0;
+  }
 
-.resume-content{
+  .resume-image{
+    width:100%;
+    height:auto;
+    border-radius:0;
+  }
 
-width:100vw;
-height:100vh;
-
-top:0;
-left:0;
-
-transform:none;
-
-padding:0;
-
-border-radius:0;
-
-overflow-y:auto;
-overflow-x:hidden;
-
-background:rgba(25,25,25,.95);
-
+  .close{
+    top:12px;
+    right:15px;
+    font-size:34px;
+  }
 }
-
-.resume-image{
-
-width:100%;
-height:auto;
-
-border-radius:0;
-
-}
-
-.close{
-
-position:fixed;
-
-top:12px;
-right:15px;
-
-font-size:34px;
-
-}
-
-}
-
-
-/* landscape */
-
-@media (max-width:1000px)
-and (orientation:landscape){
-
-.resume-content{
-
-width:100vw;
-height:100vh;
-
-padding:0;
-
-}
-
-}
-
-
-/* rotate animation */
 
 .rotate-notice{
-
-display:none;
-
-position:fixed;
-
-inset:0;
-
-background:rgba(0,0,0,.95);
-
-z-index:999999999;
-
-justify-content:center;
-align-items:center;
-
-flex-direction:column;
-
-color:white;
-
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.95);
+  z-index:999999999;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  color:white;
 }
-
 
 .phone-wrap{
-
-font-size:75px;
-
-animation:rotatePhone 2s ease infinite;
-
-margin-bottom:20px;
-
+  font-size:75px;
+  animation:rotatePhone 2s ease infinite;
+  margin-bottom:20px;
 }
 
-
-.rotate-text{
-
-font-size:18px;
-
-opacity:.8;
-
-}
-
+.rotate-text{font-size:18px;opacity:.8;}
 
 @keyframes rotatePhone{
-
-0%{
-transform:rotate(0deg);
+  0%{transform:rotate(0deg);}
+  40%{transform:rotate(0deg);}
+  100%{transform:rotate(90deg);}
 }
-
-40%{
-transform:rotate(0deg);
-}
-
-100%{
-transform:rotate(90deg);
-}
-
-}
-
 </style>
 </head>
 
 <body>
 
-<div id="rotateNotice"
-class="rotate-notice">
-
-<div class="phone-wrap">
-📱
+<div id="rotateNotice" class="rotate-notice">
+  <div class="phone-wrap">📱</div>
+  <div class="rotate-text">Rotate for a better experience</div>
 </div>
 
-<div class="rotate-text">
-Rotate for a better experience
-</div>
-
-</div>
-
-
-<img src="image.jpg"
-alt="Portfolio image">
-
+<img src="image.jpg" alt="Portfolio image">
 
 <footer class="footer">
-
-More being uploaded soon.
-Thanks for making it this far.
-
+  More being uploaded soon.<br>
+  Thanks for making it this far.
 </footer>
 
-
 <div class="floating-buttons">
-
-<button
-class="resume-btn"
-onclick="openResume()">
-Resume
-</button>
-
-<button
-class="back-to-top"
-onclick="window.scrollTo({
-top:0,
-behavior:'smooth'
-})">
-↑
-</button>
-
+  <button class="resume-btn" type="button" onclick="openResume()">Resume</button>
+  <button class="back-to-top" type="button" onclick="scrollToTop()">↑</button>
 </div>
 
+<div id="resumeModal" class="resume-modal">
+  <span class="close" onclick="closeResume()">×</span>
 
-<div
-id="resumeModal"
-class="resume-modal"
-onclick="outsideClick(event)">
-
-<div class="resume-content">
-
-<span
-class="close"
-onclick="closeResume()">
-×
-</span>
-
-<img
-src="resume.png"
-class="resume-image"
-alt="Resume">
-
+  <div class="resume-content">
+    <img src="resume.png" class="resume-image" alt="Resume">
+  </div>
 </div>
-
-</div>
-
 
 <script>
+function scrollToTop(){
+  window.scrollTo({top:0, behavior:"smooth"});
+}
 
 function openResume(){
-
-document.getElementById(
-"resumeModal"
-).style.display="block";
-
-document.body.style.overflow=
-"hidden";
-
-document.documentElement.style.overflow=
-"hidden";
-
+  document.getElementById("resumeModal").style.display="block";
+  document.body.style.overflow="hidden";
+  document.documentElement.style.overflow="hidden";
 }
-
 
 function closeResume(){
-
-document.getElementById(
-"resumeModal"
-).style.display="none";
-
-document.body.style.overflow="";
-document.documentElement.style.overflow="";
-
+  document.getElementById("resumeModal").style.display="none";
+  document.body.style.overflow="";
+  document.documentElement.style.overflow="";
 }
 
+document.getElementById("resumeModal").addEventListener("click", function(e){
+  if(e.target.id === "resumeModal"){
+    closeResume();
+  }
+});
 
-function outsideClick(event){
+if(window.innerWidth < 768){
+  const notice=document.getElementById("rotateNotice");
+  notice.style.display="flex";
 
-const popup=
-document.querySelector(
-".resume-content"
-);
-
-if(
-!popup.contains(event.target)
-){
-
-closeResume();
-
+  setTimeout(()=>{
+    notice.style.display="none";
+  },5000);
 }
-
-}
-
-
-if(window.innerWidth<768){
-
-const notice=
-document.getElementById(
-"rotateNotice"
-);
-
-notice.style.display=
-"flex";
-
-setTimeout(()=>{
-
-notice.style.display=
-"none";
-
-},5000);
-
-}
-
 </script>
 
 </body>
