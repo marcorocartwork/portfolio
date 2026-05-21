@@ -26,34 +26,52 @@ width:100%;
 height:auto;
 }
 
-/* Footer spacing for mobile */
+/* Footer */
 
 .footer{
 width:100%;
 text-align:center;
+
 padding:70px 20px 140px;
+
 background:#000;
+
 color:white;
+
 font-size:14px;
+
 line-height:1.8;
+
+box-sizing:border-box;
 }
+
 
 /* Floating buttons */
 
 .floating-buttons{
+
 position:fixed;
+
 bottom:25px;
 right:25px;
+
 display:flex;
+
 gap:12px;
+
 z-index:999999;
 }
+
+
+/* Glass buttons */
 
 .resume-btn,
 .back-to-top{
 
 height:50px;
+
 border:none;
+
 border-radius:30px;
 
 background:rgba(255,255,255,.08);
@@ -64,6 +82,7 @@ backdrop-filter:blur(18px);
 border:1px solid rgba(255,255,255,.15);
 
 color:white;
+
 cursor:pointer;
 
 box-shadow:
@@ -75,6 +94,7 @@ transition:.3s;
 
 .resume-btn{
 width:90px;
+font-size:14px;
 }
 
 .back-to-top{
@@ -84,8 +104,11 @@ font-size:24px;
 
 .resume-btn:hover,
 .back-to-top:hover{
+
 transform:translateY(-3px);
+
 background:rgba(255,255,255,.15);
+
 }
 
 
@@ -104,10 +127,11 @@ background:rgba(0,0,0,.8);
 backdrop-filter:blur(10px);
 
 z-index:1000000;
+
 }
 
 
-/* modern card */
+/* Popup card */
 
 .resume-content{
 
@@ -118,49 +142,61 @@ left:50%;
 
 transform:translate(-50%,-50%);
 
-width:90%;
-max-width:900px;
+width:auto;
+height:auto;
 
-height:90vh;
+max-width:95vw;
+max-height:95vh;
+
+padding:15px;
 
 border-radius:30px;
 
-overflow:auto;
-
-background:rgba(25,25,25,.8);
+background:rgba(25,25,25,.82);
 
 backdrop-filter:blur(30px);
 
-padding:20px;
+overflow:auto;
 
 box-sizing:border-box;
+
+box-shadow:
+0 25px 60px rgba(0,0,0,.7);
+
+border:1px solid rgba(255,255,255,.08);
+
 }
 
 
-/* IMPORTANT */
+/* Resume image */
 
 .resume-image{
 
 display:block;
 
-width:100%;
-
+width:auto;
 height:auto;
+
+max-width:100%;
+max-height:85vh;
 
 border-radius:15px;
 
+object-fit:contain;
+
 background:white;
+
 }
 
 
-/* orange X */
+/* Orange close */
 
 .close{
 
 position:absolute;
 
-top:18px;
-right:24px;
+top:12px;
+right:20px;
 
 font-size:42px;
 
@@ -171,13 +207,50 @@ cursor:pointer;
 z-index:999;
 }
 
+
+/* Mobile fix */
+
+@media (max-width:768px){
+
+.resume-content{
+
+width:92vw;
+
+max-height:88vh;
+
+padding:10px;
+
+border-radius:20px;
+
+}
+
+.resume-image{
+
+width:100%;
+
+height:auto;
+
+max-height:none;
+
+}
+
+.close{
+
+top:8px;
+right:15px;
+
+font-size:32px;
+
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
 <img src="image.jpg" alt="Portfolio image">
-
 
 <footer class="footer">
 
@@ -191,26 +264,38 @@ Thanks for making it this far.
 
 <button class="resume-btn"
 onclick="openResume()">
+
 Resume
+
 </button>
 
+
 <button class="back-to-top"
-onclick="window.scrollTo({top:0,behavior:'smooth'})">
+onclick="window.scrollTo({
+top:0,
+behavior:'smooth'
+})">
+
 ↑
+
 </button>
 
 </div>
 
 
 
-<div id="resumeModal"
+<div
+id="resumeModal"
 class="resume-modal">
 
 <div class="resume-content">
 
-<span class="close"
+<span
+class="close"
 onclick="closeResume()">
+
 ×
+
 </span>
 
 <img
@@ -227,15 +312,19 @@ alt="Resume">
 <script>
 
 function openResume(){
+
 document.getElementById(
 "resumeModal"
 ).style.display="block";
+
 }
 
 function closeResume(){
+
 document.getElementById(
 "resumeModal"
 ).style.display="none";
+
 }
 
 </script>
