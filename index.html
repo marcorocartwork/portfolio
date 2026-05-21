@@ -11,277 +11,478 @@
 <title>Marco Rocha — Portfolio</title>
 
 <style>
+
 html{
-  scroll-behavior:smooth;
+scroll-behavior:smooth;
 }
 
 html,body{
-  margin:0;
-  padding:0;
-  background:#000;
-  overflow-x:hidden;
-  font-family:Arial,sans-serif;
+margin:0;
+padding:0;
+background:#000;
+overflow-x:hidden;
+font-family:Arial,sans-serif;
 }
 
 img{
-  display:block;
-  width:100%;
-  height:auto;
+display:block;
+width:100%;
+height:auto;
 }
 
 .footer{
-  width:100%;
-  text-align:center;
-  padding:70px 20px 140px;
-  background:#000;
-  color:white;
-  font-size:14px;
-  line-height:1.8;
-  box-sizing:border-box;
+width:100%;
+text-align:center;
+padding:70px 20px 140px;
+background:#000;
+color:white;
+font-size:14px;
+line-height:1.8;
+box-sizing:border-box;
 }
 
+/* floating buttons */
+
 .floating-buttons{
-  position:fixed;
-  bottom:25px;
-  right:25px;
-  display:flex;
-  gap:12px;
-  z-index:999999;
+position:fixed;
+bottom:25px;
+right:25px;
+display:flex;
+gap:12px;
+z-index:999999;
 }
 
 .resume-btn,
 .back-to-top{
-  height:50px;
-  border:none;
-  border-radius:30px;
-  background:rgba(255,255,255,.08);
-  backdrop-filter:blur(18px);
-  -webkit-backdrop-filter:blur(18px);
-  border:1px solid rgba(255,255,255,.15);
-  color:white;
-  cursor:pointer;
-  box-shadow:0 8px 30px rgba(0,0,0,.45),
-  inset 0 1px 1px rgba(255,255,255,.1);
-  transition:.3s;
+
+height:50px;
+
+border:none;
+
+border-radius:30px;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(18px);
+-webkit-backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,.15);
+
+color:white;
+
+cursor:pointer;
+
+box-shadow:
+0 8px 30px rgba(0,0,0,.45),
+inset 0 1px 1px rgba(255,255,255,.1);
+
+transition:.3s;
 }
 
 .resume-btn{
-  width:90px;
-  font-size:14px;
+width:90px;
+font-size:14px;
 }
 
 .back-to-top{
-  width:50px;
-  font-size:24px;
+width:50px;
+font-size:24px;
 }
 
 .resume-btn:hover,
 .back-to-top:hover{
-  transform:translateY(-3px);
-  background:rgba(255,255,255,.15);
+transform:translateY(-3px);
+background:rgba(255,255,255,.15);
 }
+
+
+/* popup background */
 
 .resume-modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.8);
-  backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
-  z-index:1000000;
+
+display:none;
+
+position:fixed;
+
+inset:0;
+
+background:rgba(0,0,0,.8);
+
+backdrop-filter:blur(10px);
+
+-webkit-backdrop-filter:blur(10px);
+
+z-index:1000000;
 }
 
-/* Desktop popup */
+
+/* DESKTOP popup smaller */
+
 .resume-content{
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  width:75vw;
-  height:78vh;
-  padding:15px;
-  border-radius:30px;
-  background:rgba(25,25,25,.82);
-  backdrop-filter:blur(30px);
-  -webkit-backdrop-filter:blur(30px);
-  overflow:auto;
-  box-sizing:border-box;
-  box-shadow:0 25px 60px rgba(0,0,0,.7);
-  border:1px solid rgba(255,255,255,.08);
+
+position:absolute;
+
+top:50%;
+left:50%;
+
+transform:translate(-50%,-50%);
+
+width:auto;
+height:auto;
+
+max-width:70vw;
+max-height:88vh;
+
+padding:15px;
+
+border-radius:30px;
+
+background:rgba(25,25,25,.82);
+
+backdrop-filter:blur(30px);
+-webkit-backdrop-filter:blur(30px);
+
+overflow:hidden;
+
+box-sizing:border-box;
+
+box-shadow:
+0 25px 60px rgba(0,0,0,.7);
+
+border:1px solid rgba(255,255,255,.08);
+
+}
+
+
+.resume-image{
+
+display:block;
+
+width:auto;
+height:auto;
+
+max-width:100%;
+max-height:82vh;
+
+object-fit:contain;
+
+border-radius:15px;
+
+background:white;
+
+}
+
+
+/* close button */
+
+.close{
+
+position:absolute;
+
+top:12px;
+right:20px;
+
+font-size:42px;
+
+color:#e1a271;
+
+cursor:pointer;
+
+z-index:999;
+}
+
+
+/* MOBILE */
+
+@media (max-width:768px){
+
+.resume-content{
+
+width:100vw;
+height:100vh;
+
+top:0;
+left:0;
+
+transform:none;
+
+padding:0;
+
+border-radius:0;
+
+overflow-y:auto;
+overflow-x:hidden;
+
+background:rgba(25,25,25,.95);
+
 }
 
 .resume-image{
-  display:block;
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  border-radius:15px;
-  background:white;
+
+width:100%;
+height:auto;
+
+max-width:none;
+max-height:none;
+
+object-fit:unset;
+
+border-radius:0;
+
 }
 
 .close{
-  position:absolute;
-  top:12px;
-  right:20px;
-  font-size:42px;
-  color:#e1a271;
-  cursor:pointer;
-  z-index:999;
+
+position:fixed;
+
+top:12px;
+right:15px;
+
+font-size:34px;
+
+z-index:99999;
+
 }
 
-/* Mobile full-width popup */
-@media (max-width:768px){
-
-  .resume-content{
-    width:100vw;
-    height:100vh;
-    top:0;
-    left:0;
-    transform:none;
-    padding:0;
-    border-radius:0;
-    overflow-y:auto;
-    overflow-x:hidden;
-    background:rgba(25,25,25,.95);
-  }
-
-  .resume-image{
-    display:block;
-    width:100%;
-    height:auto;
-    max-width:none;
-    max-height:none;
-    object-fit:unset;
-    border-radius:0;
-  }
-
-  .close{
-    position:fixed;
-    top:12px;
-    right:15px;
-    font-size:34px;
-    z-index:99999;
-  }
 }
 
-/* Landscape mobile after rotation */
-@media (max-width:1000px) and (orientation:landscape){
 
-  .resume-content{
-    width:100vw;
-    height:100vh;
-    padding:0;
-  }
+/* landscape mobile */
 
-  .resume-image{
-    width:100%;
-    height:auto;
-  }
+@media (max-width:1000px)
+and (orientation:landscape){
+
+.resume-content{
+
+width:100vw;
+height:100vh;
+
+padding:0;
+
 }
 
-/* Rotate phone animation */
+}
+
+
+/* rotate intro */
+
 .rotate-notice{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.95);
-  z-index:999999999;
-  justify-content:center;
-  align-items:center;
-  flex-direction:column;
-  color:white;
+
+display:none;
+
+position:fixed;
+
+inset:0;
+
+background:rgba(0,0,0,.95);
+
+z-index:999999999;
+
+display:flex;
+
+justify-content:center;
+align-items:center;
+
+flex-direction:column;
+
+color:white;
+
+opacity:0;
 }
+
 
 .phone-wrap{
-  font-size:75px;
-  animation:rotatePhone 2s ease infinite;
-  margin-bottom:20px;
+
+font-size:75px;
+
+animation:rotatePhone 2s ease infinite;
+
+margin-bottom:20px;
+
 }
 
 .rotate-text{
-  font-size:18px;
-  opacity:.8;
+
+font-size:18px;
+
+opacity:.8;
 }
+
 
 @keyframes rotatePhone{
-  0%{
-    transform:rotate(0deg);
-  }
 
-  40%{
-    transform:rotate(0deg);
-  }
-
-  100%{
-    transform:rotate(90deg);
-  }
+0%{
+transform:rotate(0deg);
 }
+
+40%{
+transform:rotate(0deg);
+}
+
+100%{
+transform:rotate(90deg);
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
-<div id="rotateNotice" class="rotate-notice">
-  <div class="phone-wrap">📱</div>
-  <div class="rotate-text">Rotate for a better experience</div>
+<div id="rotateNotice"
+class="rotate-notice">
+
+<div class="phone-wrap">
+
+📱
+
 </div>
 
-<img src="image.jpg" alt="Portfolio image">
+<div class="rotate-text">
+
+Rotate for a better experience
+
+</div>
+
+</div>
+
+
+<img src="image.jpg"
+alt="Portfolio image">
+
 
 <footer class="footer">
-  More being uploaded soon.<br>
-  Thanks for making it this far.
+
+More being uploaded soon.
+Thanks for making it this far.
+
 </footer>
 
+
 <div class="floating-buttons">
-  <button class="resume-btn" onclick="openResume()">Resume</button>
 
-  <button class="back-to-top"
-  onclick="window.scrollTo({top:0,behavior:'smooth'})">
-    ↑
-  </button>
+<button
+class="resume-btn"
+onclick="openResume()">
+
+Resume
+
+</button>
+
+
+<button
+class="back-to-top"
+onclick="window.scrollTo({
+top:0,
+behavior:'smooth'
+})">
+
+↑
+
+</button>
+
 </div>
 
-<div id="resumeModal" class="resume-modal" onclick="outsideClick(event)">
-  <div class="resume-content">
-    <span class="close" onclick="closeResume()">×</span>
 
-    <img src="resume.png" class="resume-image" alt="Resume">
-  </div>
+<div
+id="resumeModal"
+class="resume-modal"
+onclick="outsideClick(event)">
+
+<div class="resume-content">
+
+<span
+class="close"
+onclick="closeResume()">
+
+×
+
+</span>
+
+
+<img
+src="resume.png"
+class="resume-image"
+alt="Resume">
+
 </div>
+
+</div>
+
 
 <script>
-function openResume(){
-  document.getElementById("resumeModal").style.display="block";
 
-  document.body.style.overflow="hidden";
-  document.documentElement.style.overflow="hidden";
+function openResume(){
+
+document.getElementById(
+"resumeModal"
+).style.display=
+"block";
+
+document.body.style.overflow=
+"hidden";
+
+document.documentElement.style.overflow=
+"hidden";
+
 }
+
 
 function closeResume(){
-  document.getElementById("resumeModal").style.display="none";
 
-  document.body.style.overflow="";
-  document.documentElement.style.overflow="";
+document.getElementById(
+"resumeModal"
+).style.display=
+"none";
+
+document.body.style.overflow=
+"";
+
+document.documentElement.style.overflow=
+"";
+
 }
+
 
 function outsideClick(event){
-  const popup=document.querySelector(".resume-content");
 
-  if(!popup.contains(event.target)){
-    closeResume();
-  }
+const popup=
+document.querySelector(
+".resume-content"
+);
+
+if(
+!popup.contains(event.target)
+){
+
+closeResume();
+
 }
+
+}
+
+
+/* mobile intro */
 
 if(window.innerWidth<768){
-  const notice=document.getElementById("rotateNotice");
 
-  notice.style.display="flex";
+const notice=
+document.getElementById(
+"rotateNotice"
+);
 
-  setTimeout(()=>{
-    notice.style.display="none";
-  },5000);
+notice.style.opacity="1";
+
+setTimeout(()=>{
+
+notice.style.display=
+"none";
+
+},5000);
+
 }
+
 </script>
 
 </body>
