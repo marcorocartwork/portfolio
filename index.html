@@ -1,153 +1,259 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Marco Rocha — Portfolio</title>
+<title>Marco Rocha — Portfolio</title>
 
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
+<style>
 
-    html, body {
-      margin: 0;
-      padding: 0;
-      background: #000;
-      overflow-x: hidden;
-    }
+html{
+scroll-behavior:smooth;
+}
 
-    img {
-      display: block;
-      width: 100%;
-      height: auto;
-      position: relative;
-      z-index: 1;
-    }
+html,body{
+margin:0;
+padding:0;
+background:#000;
+overflow-x:hidden;
+}
 
-    .footer {
-      width: 100%;
-      text-align: center;
-      padding: 25px 0;
-      background: #000;
-      color: white;
-      font-size: 14px;
-      font-family: Arial, sans-serif;
-      position: relative;
-      z-index: 2;
-    }
+img{
+display:block;
+width:100%;
+height:auto;
+}
 
-    .floating-buttons {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      display: flex;
-      gap: 12px;
-      z-index: 999999;
-    }
+/* Bigger footer for mobile spacing */
 
-    .resume-btn,
-    .back-to-top {
-      height: 50px;
-      border-radius: 30px;
-      background: rgba(255,255,255,0.16);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255,255,255,0.35);
-      color: white;
-      cursor: pointer;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.45);
-      transition: all .3s ease;
-    }
+.footer{
+width:100%;
+text-align:center;
+padding:70px 20px 120px; /* increased bottom space */
 
-    .resume-btn {
-      width: 90px;
-      font-size: 14px;
-    }
+background:#000;
 
-    .back-to-top {
-      width: 50px;
-      font-size: 24px;
-    }
+color:white;
 
-    .resume-btn:hover,
-    .back-to-top:hover {
-      transform: translateY(-3px) scale(1.05);
-      background: rgba(255,255,255,0.25);
-    }
+font-size:14px;
+font-family:Arial,sans-serif;
 
-    .resume-modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,.9);
-      z-index: 1000000;
-    }
+line-height:1.8;
+box-sizing:border-box;
+}
 
-    .resume-content {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 85%;
-      height: 90%;
-      background: #111;
-      border-radius: 20px;
-      overflow: hidden;
-    }
 
-    .resume-content iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
+/* Floating buttons */
 
-    .close {
-      position: absolute;
-      top: 12px;
-      right: 20px;
-      color: white;
-      font-size: 32px;
-      cursor: pointer;
-      z-index: 2;
-    }
-  </style>
+.floating-buttons{
+position:fixed;
+bottom:25px;
+right:25px;
+
+display:flex;
+gap:12px;
+
+z-index:999999;
+}
+
+
+/* Resume + arrow buttons */
+
+.resume-btn,
+.back-to-top{
+
+height:50px;
+
+border:none;
+
+border-radius:30px;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(18px);
+-webkit-backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,.15);
+
+color:white;
+
+box-shadow:
+0 8px 30px rgba(0,0,0,.45),
+inset 0 1px 1px rgba(255,255,255,.1);
+
+cursor:pointer;
+
+transition:.3s;
+}
+
+.resume-btn{
+width:90px;
+font-size:14px;
+}
+
+.back-to-top{
+width:50px;
+font-size:24px;
+}
+
+.resume-btn:hover,
+.back-to-top:hover{
+
+transform:translateY(-3px);
+
+background:rgba(255,255,255,.15);
+
+}
+
+
+/* MODERN POPUP */
+
+.resume-modal{
+
+display:none;
+
+position:fixed;
+
+inset:0;
+
+background:rgba(0,0,0,.8);
+
+backdrop-filter:blur(10px);
+
+z-index:1000000;
+}
+
+
+.resume-content{
+
+position:absolute;
+
+top:50%;
+left:50%;
+
+transform:translate(-50%,-50%);
+
+width:90%;
+height:90%;
+
+border-radius:30px;
+
+overflow:hidden;
+
+background:rgba(30,30,30,.8);
+
+backdrop-filter:blur(30px);
+
+border:1px solid rgba(255,255,255,.08);
+
+box-shadow:
+0 25px 60px rgba(0,0,0,.6);
+
+}
+
+
+/* PDF */
+
+.resume-content iframe{
+
+width:100%;
+height:100%;
+border:none;
+
+background:white;
+}
+
+
+/* X button */
+
+.close{
+
+position:absolute;
+
+top:18px;
+right:24px;
+
+font-size:36px;
+
+font-weight:300;
+
+color:#e1a271; /* new color */
+
+cursor:pointer;
+
+z-index:999;
+transition:.3s;
+}
+
+.close:hover{
+
+transform:scale(1.15);
+
+opacity:.8;
+
+}
+
+</style>
 </head>
 
 <body>
 
-  <img src="image.jpg" alt="Portfolio image">
+<img src="image.jpg" alt="Portfolio image">
 
-  <footer class="footer">
-    More being uploaded soon. Thanks for making it this far.
-  </footer>
+<footer class="footer">
+More being uploaded soon.
+Thanks for making it this far.
+</footer>
 
-  <div class="floating-buttons">
-    <button class="resume-btn" onclick="openResume()">Resume</button>
 
-    <button class="back-to-top"
-      onclick="window.scrollTo({top:0, behavior:'smooth'})">
-      ↑
-    </button>
-  </div>
+<div class="floating-buttons">
 
-  <div id="resumeModal" class="resume-modal">
-    <div class="resume-content">
-      <span class="close" onclick="closeResume()">×</span>
-      <iframe src="resume.pdf"></iframe>
-    </div>
-  </div>
+<button class="resume-btn"
+onclick="openResume()">
+Resume
+</button>
 
-  <script>
-    function openResume(){
-      document.getElementById("resumeModal").style.display = "block";
-    }
+<button class="back-to-top"
+onclick="window.scrollTo({top:0,behavior:'smooth'})">
+↑
+</button>
 
-    function closeResume(){
-      document.getElementById("resumeModal").style.display = "none";
-    }
-  </script>
+</div>
+
+
+<div id="resumeModal"
+class="resume-modal">
+
+<div class="resume-content">
+
+<span class="close"
+onclick="closeResume()">
+×
+</span>
+
+<iframe src="resume.pdf"></iframe>
+
+</div>
+
+</div>
+
+
+<script>
+
+function openResume(){
+document.getElementById(
+"resumeModal"
+).style.display="block";
+}
+
+function closeResume(){
+document.getElementById(
+"resumeModal"
+).style.display="none";
+}
+
+</script>
 
 </body>
 </html>
