@@ -7,6 +7,10 @@
   <title>Marco Rocha — Portfolio</title>
 
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
     html, body {
       margin: 0;
       padding: 0;
@@ -16,8 +20,8 @@
 
     img {
       display: block;
-      width: 100%;        /* fill screen width */
-      height: auto;       /* keep proportions */
+      width: 100%;
+      height: auto;
     }
 
     .footer {
@@ -29,15 +33,39 @@
       font-size: 14px;
       font-family: Arial, sans-serif;
     }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255,255,255,0.15);
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+    }
+
+    .back-to-top:hover {
+      background: rgba(255,255,255,0.25);
+    }
   </style>
 </head>
 
 <body>
+
   <img src="image.jpg" alt="Portfolio image">
 
   <footer class="footer">
     More being uploaded soon. Thanks for making it this far.
   </footer>
+
+  <button class="back-to-top" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+    ↑
+  </button>
 
 </body>
 </html>
