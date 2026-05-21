@@ -16,6 +16,7 @@
       padding: 0;
       background: #000;
       overflow-x: hidden; /* no horizontal scroll */
+      cursor: none;
     }
 
     img {
@@ -36,26 +37,53 @@
 
     .back-to-top {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 45px;
-      height: 45px;
+      bottom: 30px;
+      right: 30px;
+      width: 55px;
+      height: 55px;
       border-radius: 50%;
-      border: none;
-      background: rgba(255,255,255,0.15);
+      border: 1px solid white;
+      background: #111;
       color: white;
-      font-size: 20px;
+      font-size: 28px;
       cursor: pointer;
-      backdrop-filter: blur(10px);
+      z-index: 9999;
     }
 
     .back-to-top:hover {
-      background: rgba(255,255,255,0.25);
+      transform: scale(1.08);
+      transition: 0.2s;
+    }
+
+    .cursor-dot {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      background: white;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 10000;
+      transform: translate(-50%, -50%);
+    }
+
+    .cursor-trail {
+      position: fixed;
+      width: 60px;
+      height: 60px;
+      border: 1px solid rgba(255,255,255,.7);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      backdrop-filter: blur(3px);
     }
   </style>
 </head>
 
 <body>
+
+  <div class="cursor-dot"></div>
+  <div class="cursor-trail"></div>
 
   <img src="image.jpg" alt="Portfolio image">
 
@@ -65,8 +93,38 @@
 
   <button class="back-to-top"
   onclick="window.scrollTo({top:0, behavior:'smooth'})">
-  ↑
+    ↑
   </button>
+
+<script>
+const dot = document.querySelector(".cursor-dot");
+const trail = document.querySelector(".cursor-trail");
+
+let mouseX = 0;
+let mouseY = 0;
+let trailX = 0;
+let trailY = 0;
+
+document.addEventListener("mousemove", (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+
+  dot.style.left = mouseX + "px";
+  dot.style.top = mouseY + "px";
+});
+
+function animate() {
+  trailX += (mouseX - trailX) * 0.12;
+  trailY += (mouseY - trailY) * 0.12;
+
+  trail.style.left = trailX + "px";
+  trail.style.top = trailY + "px";
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+</script>
 
 </body>
 </html>
