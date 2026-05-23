@@ -165,30 +165,27 @@ img{
 }
 
 /* MOBILE LANDSCAPE - full width */
+/* MOBILE LANDSCAPE - full width without cutting */
 @media (max-width:1000px) and (orientation:landscape){
+  .resume-modal{
+    overflow:hidden;
+  }
+
   .resume-content{
-    width:100vw;
-    height:100vh;
-
-    top:0;
-    left:0;
-    transform:none;
-
+    width:100%;
+    height:100%;
     padding:0;
     border-radius:0;
-
     overflow-y:auto;
     overflow-x:hidden;
   }
 
   .resume-image{
-    width:100vw;
+    width:100%;
     height:auto;
-
-    max-width:none;
+    max-width:100%;
     max-height:none;
-
-    object-fit:unset;
+    object-fit:contain;
     border-radius:0;
   }
 }
